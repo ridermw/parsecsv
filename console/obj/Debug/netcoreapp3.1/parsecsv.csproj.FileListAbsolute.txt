@@ -1,0 +1,12 @@
+/Users/mattwilliams/git/parsecsv/console/bin/Debug/netcoreapp3.1/parsecsv.deps.json
+/Users/mattwilliams/git/parsecsv/console/bin/Debug/netcoreapp3.1/parsecsv.runtimeconfig.json
+/Users/mattwilliams/git/parsecsv/console/bin/Debug/netcoreapp3.1/parsecsv.runtimeconfig.dev.json
+/Users/mattwilliams/git/parsecsv/console/bin/Debug/netcoreapp3.1/parsecsv.dll
+/Users/mattwilliams/git/parsecsv/console/bin/Debug/netcoreapp3.1/parsecsv.pdb
+/Users/mattwilliams/git/parsecsv/console/obj/Debug/netcoreapp3.1/parsecsv.csprojAssemblyReference.cache
+/Users/mattwilliams/git/parsecsv/console/obj/Debug/netcoreapp3.1/parsecsv.AssemblyInfoInputs.cache
+/Users/mattwilliams/git/parsecsv/console/obj/Debug/netcoreapp3.1/parsecsv.AssemblyInfo.cs
+/Users/mattwilliams/git/parsecsv/console/obj/Debug/netcoreapp3.1/parsecsv.csproj.CoreCompileInputs.cache
+/Users/mattwilliams/git/parsecsv/console/obj/Debug/netcoreapp3.1/parsecsv.dll
+/Users/mattwilliams/git/parsecsv/console/obj/Debug/netcoreapp3.1/parsecsv.pdb
+/Users/mattwilliams/git/parsecsv/console/obj/Debug/netcoreapp3.1/parsecsv.genruntimeconfig.cache

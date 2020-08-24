@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mattwilliams/git/parsecsv/parsecsv.csproj": {}
+    "/Users/mattwilliams/git/parsecsv/console/parsecsv.csproj": {}
   },
   "projects": {
-    "/Users/mattwilliams/git/parsecsv/parsecsv.csproj": {
+    "/Users/mattwilliams/git/parsecsv/console/parsecsv.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mattwilliams/git/parsecsv/parsecsv.csproj",
+        "projectUniqueName": "/Users/mattwilliams/git/parsecsv/console/parsecsv.csproj",
         "projectName": "parsecsv",
-        "projectPath": "/Users/mattwilliams/git/parsecsv/parsecsv.csproj",
+        "projectPath": "/Users/mattwilliams/git/parsecsv/console/parsecsv.csproj",
         "packagesPath": "/Users/mattwilliams/.nuget/packages/",
-        "outputPath": "/Users/mattwilliams/git/parsecsv/obj/",
+        "outputPath": "/Users/mattwilliams/git/parsecsv/console/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/mattwilliams/.nuget/NuGet/NuGet.Config"
