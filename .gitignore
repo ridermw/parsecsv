@@ -431,3 +431,7 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+console/bin/Debug/netcoreapp3.1/console.dll
+console/bin/Debug/netcoreapp3.1/console.pdb
+console/obj/Debug/netcoreapp3.1/console.dll
+console/obj/Debug/netcoreapp3.1/console.pdb

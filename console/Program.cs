@@ -40,16 +40,32 @@ MY WORK ITEMS
 */
 namespace console
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("\nWhat is your name? ");
-            var name = Console.ReadLine();
-            var date = DateTime.Now;
-            Console.WriteLine($"\nHello, {name}, on {date:d} at {date:t}!");
-            Console.Write("\nPress any key to exit...");
-            Console.ReadKey(true);
+            // Console.WriteLine("\nWhat is your name? ");
+            // var name = Console.ReadLine();
+            // var date = DateTime.Now;
+            // Console.WriteLine($"\nHello, {name}, on {date:d} at {date:t}!");
+            // Console.Write("\nPress any key to exit...");
+            // Console.ReadKey(true);
+            if (ValidateArgs(args)) {
+                ParseCsv(args);
+            }
+        }
+
+        // Validate the arguements passed in to Main
+        public static bool ValidateArgs(string[] args)
+        {
+            var isValidArgs = args.Length == 1;
+            return isValidArgs;
+        }
+        
+        // Parse Csv file
+        public static void ParseCsv(string[] args)
+        {
+            
         }
     }
 }

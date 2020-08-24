@@ -1,13 +1,33 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using console;
 namespace console.tests
 {
     [TestClass]
-    public class UnitTest1
+    public class ConsoleUnitTests
     {
-        [TestMethod]
-        public void TestMethod1()
+        private readonly Program _program;
+
+        public ConsoleUnitTests()
         {
+            _program = new Program();
+        }
+
+        [TestMethod]
+        public void ProgramWithNoArgs()
+        {
+            Assert.IsFalse(Program.ValidateArgs(new string[0]));
+        }
+
+        [TestMethod]
+        public void ProgramWithOneArgs()
+        {
+            Assert.IsTrue(Program.ValidateArgs(new string[1]));
+        }
+
+        [TestMethod]
+        public void ProgramWithManyArgs()
+        {
+            Assert.IsFalse(Program.ValidateArgs(new string[10]));
         }
     }
 }
