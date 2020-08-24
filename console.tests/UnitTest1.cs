@@ -1,16 +1,16 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using console;
+
 namespace console.tests
 {
     [TestClass]
     public class ConsoleUnitTests
     {
-        private readonly Program _program;
+        // private readonly Program _program;
 
-        public ConsoleUnitTests()
-        {
-            _program = new Program();
-        }
+        // public ConsoleUnitTests()
+        // {
+        //     _program = new Program();
+        // }
 
         [TestMethod]
         public void NoArgs()
