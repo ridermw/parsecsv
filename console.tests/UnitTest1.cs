@@ -15,19 +15,19 @@ namespace console.tests
         [TestMethod]
         public void ProgramWithNoArgs()
         {
-            Assert.IsFalse(Program.ValidateArgs(new string[0]));
+            Assert.IsTrue(Program.ValidateArgs(new string[0]) == ErrorCode.NO_ARGS);
         }
 
         [TestMethod]
         public void ProgramWithOneArgs()
         {
-            Assert.IsTrue(Program.ValidateArgs(new string[1]));
+            Assert.IsTrue(Program.ValidateArgs(new string[1]) == ErrorCode.NONE);
         }
 
         [TestMethod]
         public void ProgramWithManyArgs()
         {
-            Assert.IsFalse(Program.ValidateArgs(new string[10]));
+            Assert.IsTrue(Program.ValidateArgs(new string[10]) == ErrorCode.MORE_THAN_ONE_ARGS);
         }
     }
 }

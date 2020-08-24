@@ -50,22 +50,54 @@ namespace console
             // Console.WriteLine($"\nHello, {name}, on {date:d} at {date:t}!");
             // Console.Write("\nPress any key to exit...");
             // Console.ReadKey(true);
-            if (ValidateArgs(args)) {
-                ParseCsv(args);
+            var errorCode = ParseCsv(args);
+
+            switch(errorCode)
+            {
+                case ErrorCode.NO_ARGS:
+                    Console.WriteLine("No arguements passed.  Please include the filename.");
+                    break;
+                case ErrorCode.MORE_THAN_ONE_ARGS:
+                    Console.WriteLine("Too many arguements passed.  Please only include the filename.");
+                    break;
             }
         }
 
         // Validate the arguements passed in to Main
-        public static bool ValidateArgs(string[] args)
+        public static ErrorCode ValidateArgs(string[] args)
         {
-            var isValidArgs = args.Length == 1;
-            return isValidArgs;
+            var returnCode = ErrorCode.NONE;
+            if (args.Length == 0) {
+                returnCode = ErrorCode.NO_ARGS;
+            } else if (args.Length > 1) {
+                returnCode = ErrorCode.MORE_THAN_ONE_ARGS;
+            }
+            if (returnCode > ErrorCode.NONE)
+                return returnCode; // no need to proceed.
+            
+            // Parse arguement and detect if file is found.
+
+            
+            return returnCode;
         }
         
         // Parse Csv file
-        public static void ParseCsv(string[] args)
+        public static ErrorCode ParseCsv(string[] args)
         {
-            
+            var returnCode = ErrorCode.NONE;
+            returnCode = ValidateArgs(args);
+
+            return returnCode;
         }
+    }
+
+    public enum ErrorCode
+    {
+        NONE = 0,
+        NO_ARGS = 1,
+        MORE_THAN_ONE_ARGS = 2,
+        FILE_NOT_FOUND = 3,
+        FEWER_THAN_FIVE = 4,
+        MORE_THAN_FIVE = 5
     }
 }
