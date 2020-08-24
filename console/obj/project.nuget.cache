@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+v196nKiEwyk+6neYHG+iDCQ0veLiP5eNPyjdkPU0S1CX7pW8ehGvU4t1LMxRpThrjBXJVsRbPqNJjW6lTuy9w==",
+  "dgSpecHash": "NdRUBL+KGSJ4wVF/L0hjK36hkwdlSTv95ornGJkKcMH8aWjUhP9UcpBMkaRpw736/bnyo+GM8NdebykBCZ3kfQ==",
   "success": true,
-  "projectFilePath": "/Users/mattwilliams/git/parsecsv/console/parsecsv.csproj",
+  "projectFilePath": "/Users/mattwilliams/git/parsecsv/console/console.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

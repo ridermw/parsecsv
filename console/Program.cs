@@ -38,7 +38,7 @@ MY WORK ITEMS
     Still show the fourth value.
 
 */
-namespace parsecsv
+namespace console
 {
     class Program
     {

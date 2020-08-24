@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mattwilliams/git/parsecsv/console/parsecsv.csproj",
-      "projectName": "parsecsv",
-      "projectPath": "/Users/mattwilliams/git/parsecsv/console/parsecsv.csproj",
+      "projectUniqueName": "/Users/mattwilliams/git/parsecsv/console/console.csproj",
+      "projectName": "console",
+      "projectPath": "/Users/mattwilliams/git/parsecsv/console/console.csproj",
       "packagesPath": "/Users/mattwilliams/.nuget/packages/",
       "outputPath": "/Users/mattwilliams/git/parsecsv/console/obj/",
       "projectStyle": "PackageReference",
