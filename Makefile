@@ -9,4 +9,4 @@ watch:
 start:
 	dotnet run --project console/console.csproj
 test:
-	dotnet test --project console.tests/console.tests.csproj
+	dotnet test console.tests/console.tests.csproj

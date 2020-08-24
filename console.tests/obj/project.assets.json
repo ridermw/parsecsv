@@ -1634,6 +1634,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "console/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/console.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/console.dll": {}
+        }
       }
     }
   },
@@ -5705,6 +5715,11 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "console/1.0.0": {
+      "type": "project",
+      "path": "../console/console.csproj",
+      "msbuildProject": "../console/console.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5712,6 +5727,7 @@
       "MSTest.TestAdapter >= 2.1.0",
       "MSTest.TestFramework >= 2.1.0",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
+      "console >= 1.0.0",
       "coverlet.collector >= 1.2.0"
     ]
   },
@@ -5738,7 +5754,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/mattwilliams/git/parsecsv/console/console.csproj": {
+              "projectPath": "/Users/mattwilliams/git/parsecsv/console/console.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
