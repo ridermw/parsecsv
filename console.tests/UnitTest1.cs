@@ -5,13 +5,6 @@ namespace console.tests
     [TestClass]
     public class ConsoleUnitTests
     {
-        // private readonly Program _program;
-
-        // public ConsoleUnitTests()
-        // {
-        //     _program = new Program();
-        // }
-
         [TestMethod]
         public void NoArgs()
         {
