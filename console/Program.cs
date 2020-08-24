@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 /*
 BY MATTHEW WILLIAMS
 FOR EMERSON Automation Solutions - Senior Software Engineer (Agile) – Job ID 20003893
@@ -60,25 +61,28 @@ namespace console
                 case ErrorCode.MORE_THAN_ONE_ARGS:
                     Console.WriteLine("Too many arguements passed.  Please only include the filename.");
                     break;
+                case ErrorCode.FILE_NOT_FOUND:
+                    Console.WriteLine("File not found!  Please check the path and try again.");
+                    break;
             }
         }
 
         // Validate the arguements passed in to Main
         public static ErrorCode ValidateArgs(string[] args)
         {
-            var returnCode = ErrorCode.NONE;
             if (args.Length == 0) {
-                returnCode = ErrorCode.NO_ARGS;
+                return ErrorCode.NO_ARGS;
             } else if (args.Length > 1) {
-                returnCode = ErrorCode.MORE_THAN_ONE_ARGS;
+                return ErrorCode.MORE_THAN_ONE_ARGS;
             }
-            if (returnCode > ErrorCode.NONE)
-                return returnCode; // no need to proceed.
             
             // Parse arguement and detect if file is found.
-
+            var fileName = args[0];
+            if (!File.Exists(fileName)) {
+                return ErrorCode.FILE_NOT_FOUND;
+            }
             
-            return returnCode;
+            return ErrorCode.NONE;
         }
         
         // Parse Csv file
