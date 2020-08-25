@@ -13,7 +13,7 @@ namespace console
     {
         const char CSV_DELIMETER = ',';
         const int COLUMN_LENGTH_MAX = 5;
-        
+
         static void Main(string[] args)
         {
             
@@ -94,7 +94,7 @@ namespace console
                         } 
                         var output = values[3];  // output the fourth value
                         if (values.Length > COLUMN_LENGTH_MAX ) {
-                            output += " WARNING: This line contains more than five values.";
+                            output += " WARNING: This line contains more than " + COLUMN_LENGTH_MAX + " values.";
                         }
                         Console.WriteLine(output);
                     }                 
