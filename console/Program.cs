@@ -13,6 +13,7 @@ namespace console
     {
         const char CSV_DELIMETER = ',';
         const int COLUMN_LENGTH_MAX = 5;
+        
         static void Main(string[] args)
         {
             

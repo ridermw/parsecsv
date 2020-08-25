@@ -1,4 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.IO;
 
 namespace console.tests
 {
@@ -35,24 +37,9 @@ namespace console.tests
         }
 
         [TestMethod]
-        public void InvalidFileFewerColumns()
-        {
-            var fileName = new string[1];
-            fileName[0] = "../../../invalid_fewer.csv";
-            Assert.IsTrue(Program.ValidateArgs(fileName) == ErrorCode.NONE);
-        }
-
-        [TestMethod]
-        public void InvalidFileMoreColumns()
-        {
-            var fileName = new string[1];
-            fileName[0] = "../../../invalid_more.csv";
-            Assert.IsTrue(Program.ValidateArgs(fileName) == ErrorCode.NONE);
-        }
-        [TestMethod]
         public void ValidFileParsed()
         {
-            var fileName = "../../../invalid_more.csv";
+            var fileName = "../../../valid.csv";
             Assert.IsTrue(Program.ParseCsv(fileName) == ErrorCode.NONE);
         }
 
@@ -66,15 +53,31 @@ namespace console.tests
         [TestMethod]
         public void InvalidFileParsedMoreValues()
         {
-            var fileName = "../../../invalid_more.csv";
-            Assert.IsTrue(Program.ParseCsv(fileName) == ErrorCode.NONE);
+            //using StringWriter to capture standard output
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+
+                var fileName = "../../../invalid_more.csv";
+                Program.ParseCsv(fileName);
+                
+                Assert.IsTrue(sw.ToString().Contains("WARNING: This line contains more than five values."));
+            }            
         }
 
         [TestMethod]
-        public void InvalidFileParsed()
+        public void NonexistingFileParsed()
         {
-            var fileName = "../../../asdf.csv";
-            Assert.IsTrue(Program.ParseCsv(fileName) == ErrorCode.NONE);
+            //using StringWriter to capture standard output
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+
+                var fileName = "../../../asdf.csv";
+                Program.ParseCsv(fileName);
+                
+                Assert.IsTrue(sw.ToString().Contains("ERROR: There was a problem reading from the file:"));
+            }         
         }
     }
 }
