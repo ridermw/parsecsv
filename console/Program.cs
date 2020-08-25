@@ -41,10 +41,15 @@ MY WORK ITEMS
 */
 namespace console
 {
+    /// <summary>
+    /// This Program will take in a file name, parse the file, and return the fourth value.
+    /// </summary>
     public class Program
     {
+        public const char CSV_DELIMETER = ',';
         static void Main(string[] args)
         {
+            //TODO: change to a try/catch 
             var errorCode = ParseCsv(args);
 
             switch(errorCode)
@@ -58,10 +63,17 @@ namespace console
                 case ErrorCode.FILE_NOT_FOUND:
                     Console.WriteLine("File not found!  Please check the path and try again.");
                     break;
+                case ErrorCode.FEWER_THAN_FIVE:
+                    Console.WriteLine("Error: A line contained few than five values in this file.");
+                    break; 
             }
         }
 
-        // Validate the arguements passed in to Main
+        /// <summary>
+        /// Validate the arguements passed in from Main. Check if file exists.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static ErrorCode ValidateArgs(string[] args)
         {
             if (args.Length == 0) {
@@ -79,7 +91,11 @@ namespace console
             return ErrorCode.NONE;
         }
         
-        // Parse Csv file
+        /// <summary>
+        /// Parse a CSV file
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static ErrorCode ParseCsv(string[] args)
         {
             var returnCode = ErrorCode.NONE;
@@ -88,7 +104,21 @@ namespace console
                 return returnCode; // error parsing args
             }
 
-            // Do work to parse file and return results.
+            using (var sr = new StreamReader(args[0])) 
+            {
+                string rowData;
+                while ((rowData = sr.ReadLine()) != null) 
+                {
+                    var values = rowData.Split(CSV_DELIMETER);
+                    if (values.Length < 5) {
+                        return ErrorCode.FEWER_THAN_FIVE;
+                    } 
+                    var output = values[3];  // output the fourth value
+
+                    Console.WriteLine(output);
+                }                 
+            }
+
             return returnCode;
         }
     }

@@ -3,6 +3,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace console.tests
 {
     [TestClass]
+    /// <summary>
+    /// unit tests for parsecsv
+    /// </summary>
     public class ConsoleUnitTests
     {
         [TestMethod]
@@ -45,6 +48,21 @@ namespace console.tests
             var fileName = new string[1];
             fileName[0] = "../../../invalid_more.csv";
             Assert.IsTrue(Program.ValidateArgs(fileName) == ErrorCode.NONE);
+        }
+        [TestMethod]
+        public void ValidFileParsed()
+        {
+            var fileName = new string[1];
+            fileName[0] = "../../../invalid_more.csv";
+            Assert.IsTrue(Program.ParseCsv(fileName) == ErrorCode.NONE);
+        }
+
+        [TestMethod]
+        public void InvalidFileParsedFewerValues()
+        {
+            var fileName = new string[1];
+            fileName[0] = "../../../invalid_fewer.csv";
+            Assert.IsTrue(Program.ParseCsv(fileName) == ErrorCode.FEWER_THAN_FIVE);
         }
 
     }
