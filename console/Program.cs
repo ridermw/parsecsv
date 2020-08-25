@@ -40,7 +40,7 @@ namespace console
         /// Validate and parse a csv file
         /// </summary>
         /// <param name="args"></param>
-        /// <returns></returns>
+        /// <returns>ErrorCode</returns>
         public static ErrorCode ProcessFile(string[] args)
         {
             var returnCode = ValidateArgs(args);
@@ -55,7 +55,7 @@ namespace console
         /// Validate the arguements passed in from Main. Check if file exists.
         /// </summary>
         /// <param name="args"></param>
-        /// <returns></returns>
+        /// <returns>ErrorCode</returns>
         public static ErrorCode ValidateArgs(string[] args)
         {
             if (args.Length == 0) {
@@ -77,7 +77,7 @@ namespace console
         /// Parse a CSV file
         /// </summary>
         /// <param name="args"></param>
-        /// <returns></returns>
+        /// <returns>ErrorCode</returns>
         public static ErrorCode ParseCsv(string fileName)
         {
             try

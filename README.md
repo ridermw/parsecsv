@@ -1,7 +1,6 @@
 # parsecsv
 
 BY MATTHEW WILLIAMS
-FOR EMERSON Automation Solutions - Senior Software Engineer (Agile) – Job ID 20003893
 
 Assignment 1 - Coding a Simple File Parser
  
