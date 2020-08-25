@@ -2,41 +2,6 @@
 using System.IO;
 /*
 BY MATTHEW WILLIAMS
-FOR EMERSON Automation Solutions - Senior Software Engineer (Agile) – Job ID 20003893
-
-Assignment 1 - Coding a Simple File Parser
- 
-Write a program that takes a file as a command-line argument.  The file will be a standard CSV with an arbitrary number of lines.  
- 
-Your program should:
- - Print the fourth value on each line to the terminal/console
- - Assert the file exists
- - Exit immediately if a line has fewer than 5 comma-separated values
- - Print a warning for each line with more than 5 comma-separated values
- 
-Given a file with the following content:
- 
-This,is,the,first,line
-This,is,another,awesome,line
- 
-Your program should produce the output:
-first
-awesome
- 
-Ideas for how to make your submission standout:
-- Use tests to drive the implementation
-- Use a language you have not used professionally before
-
-MY WORK ITEMS
--------------
-
-1.  Create an app with command line arguements.  Use first arguement as a path to a file.  Check if file exists and return an error
-    if it doesnt.  Display help text with 0 or more than 1 arguements.
-
-2.  Attempt to parse file.  If file throws error or has fewer than 5 comma separated values, exit and display error message.
-
-3.  Print the fourth element of each line.  If the line has more than 5 values, display a warning for that line.
-    Still show the fourth value.
 
 */
 namespace console
@@ -46,11 +11,12 @@ namespace console
     /// </summary>
     public class Program
     {
-        public const char CSV_DELIMETER = ',';
+        const char CSV_DELIMETER = ',';
+        const int COLUMN_LENGTH_MAX = 5;
         static void Main(string[] args)
         {
-            //TODO: change to a try/catch 
-            var errorCode = ParseCsv(args);
+            
+            var errorCode = ProcessFile(args);
 
             switch(errorCode)
             {
@@ -64,9 +30,24 @@ namespace console
                     Console.WriteLine("File not found!  Please check the path and try again.");
                     break;
                 case ErrorCode.FEWER_THAN_FIVE:
-                    Console.WriteLine("Error: A line contained few than five values in this file.");
+                    Console.WriteLine("Error: A line contained fewer than " + COLUMN_LENGTH_MAX + " values in this file.");
                     break; 
             }
+        }
+
+        /// <summary>
+        /// Validate and parse a csv file
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        public static ErrorCode ProcessFile(string[] args)
+        {
+            var returnCode = ValidateArgs(args);
+            if (returnCode != ErrorCode.NONE) {
+                return returnCode; // error parsing args
+            }
+
+            return ParseCsv(args[0]);
         }
 
         /// <summary>
@@ -90,36 +71,41 @@ namespace console
             
             return ErrorCode.NONE;
         }
-        
+
         /// <summary>
         /// Parse a CSV file
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static ErrorCode ParseCsv(string[] args)
+        public static ErrorCode ParseCsv(string fileName)
         {
-            var returnCode = ErrorCode.NONE;
-            returnCode = ValidateArgs(args);
-            if (returnCode != ErrorCode.NONE) {
-                return returnCode; // error parsing args
-            }
-
-            using (var sr = new StreamReader(args[0])) 
+            try
             {
-                string rowData;
-                while ((rowData = sr.ReadLine()) != null) 
+                // parse file
+                using (var sr = new StreamReader(fileName)) 
                 {
-                    var values = rowData.Split(CSV_DELIMETER);
-                    if (values.Length < 5) {
-                        return ErrorCode.FEWER_THAN_FIVE;
-                    } 
-                    var output = values[3];  // output the fourth value
-
-                    Console.WriteLine(output);
-                }                 
+                    string rowData;
+                    while ((rowData = sr.ReadLine()) != null) 
+                    {
+                        var values = rowData.Split(CSV_DELIMETER);
+                        if (values.Length < COLUMN_LENGTH_MAX) {
+                            return ErrorCode.FEWER_THAN_FIVE;
+                        } 
+                        var output = values[3];  // output the fourth value
+                        if (values.Length > COLUMN_LENGTH_MAX ) {
+                            output += " WARNING: This line contains more than five values.";
+                        }
+                        Console.WriteLine(output);
+                    }                 
+                }
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine("ERROR: There was a problem reading from the file:");
+                Console.WriteLine(e.Message);                
             }
 
-            return returnCode;
+            return ErrorCode.NONE;
         }
     }
 
@@ -129,7 +115,6 @@ namespace console
         NO_ARGS = 1,
         MORE_THAN_ONE_ARGS = 2,
         FILE_NOT_FOUND = 3,
-        FEWER_THAN_FIVE = 4,
-        MORE_THAN_FIVE = 5
+        FEWER_THAN_FIVE = 4
     }
 }

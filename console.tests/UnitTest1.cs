@@ -52,18 +52,29 @@ namespace console.tests
         [TestMethod]
         public void ValidFileParsed()
         {
-            var fileName = new string[1];
-            fileName[0] = "../../../invalid_more.csv";
+            var fileName = "../../../invalid_more.csv";
             Assert.IsTrue(Program.ParseCsv(fileName) == ErrorCode.NONE);
         }
 
         [TestMethod]
         public void InvalidFileParsedFewerValues()
         {
-            var fileName = new string[1];
-            fileName[0] = "../../../invalid_fewer.csv";
+            var fileName = "../../../invalid_fewer.csv";
             Assert.IsTrue(Program.ParseCsv(fileName) == ErrorCode.FEWER_THAN_FIVE);
         }
 
+        [TestMethod]
+        public void InvalidFileParsedMoreValues()
+        {
+            var fileName = "../../../invalid_more.csv";
+            Assert.IsTrue(Program.ParseCsv(fileName) == ErrorCode.NONE);
+        }
+
+        [TestMethod]
+        public void InvalidFileParsed()
+        {
+            var fileName = "../../../asdf.csv";
+            Assert.IsTrue(Program.ParseCsv(fileName) == ErrorCode.NONE);
+        }
     }
 }

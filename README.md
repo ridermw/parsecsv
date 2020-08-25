@@ -32,7 +32,6 @@ MY WORK ITEMS
 1.  Create an app with command line arguements.  Use first arguement as a path to a file.  Check if file exists and return an error
     if it doesnt.  Display help text with 0 or more than 1 arguements.
 
-2.  Attempt to parse file.  If file throws error or has fewer than 5 comma separated values, exit and display error message.
+2.  Attempt to parse file.  Print the fourth element of each line.  If a line has fewer than 5 comma separated values, exit and display error message.
 
-3.  Print the fourth element of each line.  If the line has more than 5 values, display a warning for that line.
-    Still show the fourth value.
+3.  If the line has more than 5 values, display a warning for that line.
